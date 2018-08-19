@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import Ionicon from 'react-ionicons';
 
 class Album extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Album extends Component {
     if (this.state.isPlaying && isSameSong) {
       this.pause();
         } else {
-           if (!isSameSong) { this.setSong(song); }    
+           if (!isSameSong) { this.setSong(song); }
           this.play();
         }
       }
@@ -70,6 +71,8 @@ class Album extends Component {
                 <td className= "songNumber"> {index+1} </td>
                 <td className= "songTitle"> {song.title} </td>
                 <td className= "songDuration"> {song.duration} </td>
+                <span className="ion-play"></span>
+                <span className="ion-pause"></span>
               </tr>
               )
             }
