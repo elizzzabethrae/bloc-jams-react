@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import albumData from './../data/albums';
+import Ionicon from 'react-ionicons';
 
 class Album extends Component {
   constructor(props) {
@@ -36,12 +37,40 @@ class Album extends Component {
     this.setState({ currentSong: song });
   }
 
+  showIcons (song, index) { //does this just take whatever we need in the function?
+    const isSameSong = this.state.currentSong === song; //is this needed?
+
+    /*const showPause = this.state.isPlaying && isSameSong;
+    const isHovered = this.state.isHovered === index + 1;
+    const showPlay = (!this.state.isPlaying && isSameSong) || isHovered;
+
+    if (showPause) {
+      return <span className="ion-pause"><ion-icon name="pause"></ion-icon></span>
+    } else if (showPlay) {
+      return <span className="ion-play"><ion-icon name="play"></ion-icon></span>
+    } else {
+      return <span className="songNumber"> {index + 1} </span>
+    }*/
+
+    if (this.state.isPlaying && isSameSong) {
+      return <span className="ion-pause"><ion-icon name="pause"></ion-icon></span>
+    } else if (!this.state.isPlaying && isSameSong) {
+      return <span className="ion-play"><ion-icon name="play"></ion-icon></span>
+    } else if (this.state.isHovered === index + 1) {
+      return <span className="ion-play"><ion-icon name="play"></ion-icon></span>
+    } else {
+      return <span className="songNumber"> {index + 1} </span>
+    }
+  }
+    //  return index+1 //{<span className="songNumber"> {index + 1} </span>}
+
+
   handleSongClick(song) {
-    const isSameSong = this.state.currentSong === song; //explain this please
+    const isSameSong = this.state.currentSong === song;
     if (this.state.isPlaying && isSameSong) {
       this.pause();
         } else {
-           if (!isSameSong) { this.setSong(song); }    
+           if (!isSameSong) { this.setSong(song); }
           this.play();
         }
       }
@@ -63,22 +92,28 @@ class Album extends Component {
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody>
-            <section className= "songList">
+          <tbody className= "songList">
+
             {this.state.album.songs.map( (song, index) => /*why this, "song" is never used in albums.js*/
-              <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                <td className= "songNumber"> {index+1} </td>
+              <tr className="song" key={index}
+              onClick={() => this.handleSongClick(song)}
+              onMouseEnter={(e) =>this.setState({isHovered: index + 1})}
+              onMouseLeave={(e) => this.setState({isHovered: false})}
+              >
+                <td> {this.showIcons(song, index)} </td>
                 <td className= "songTitle"> {song.title} </td>
                 <td className= "songDuration"> {song.duration} </td>
               </tr>
               )
             }
-            </section>
+
           </tbody>
           </table>
       </section>
     );
   }
 }
+
+
 
 export default Album;
