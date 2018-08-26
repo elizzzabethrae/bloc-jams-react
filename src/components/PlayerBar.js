@@ -16,7 +16,7 @@ class PlayerBar extends Component {
               <ion-icon name="play"></ion-icon>}
             </span>
           </button>
-          <button id="next">
+          <button id="next" onClick={this.props.handleNextClick}>
             <span className="ion-skip-forward"><ion-icon name="skip-forward"></ion-icon></span>
           </button>
         </section>
