@@ -134,6 +134,16 @@ class Album extends Component {
     this.setState({ volume : newVolume });
   }
 
+  formatTime (e) {
+      // i dont think this is needed e = Number(e);
+      var m = Math.floor(e % 3600 / 60);
+      var s = Math.floor(e % 3600 % 60);
+
+      var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+      var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+      return  mDisplay + sDisplay;
+  }
+
   render() {
     return (
       <section className="album">
@@ -171,8 +181,8 @@ class Album extends Component {
           <PlayerBar
             isPlaying={this.state.isPlaying}
             currentSong={this.state.currentSong}
-            currentTime={this.audioElement.currentTime}
-            duration={this.audioElement.duration}
+            formatTime(currentTime={this.audioElement.currentTime}
+            formatTime(duration)={this.state.duration}
             volume={this.audioElement.volume}
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
