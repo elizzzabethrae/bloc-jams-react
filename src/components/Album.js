@@ -139,8 +139,8 @@ class Album extends Component {
       var m = Math.floor(e % 3600 / 60);
       var s = Math.floor(e % 3600 % 60);
 
-      var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-      var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+      var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes, ") : "";
+      var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
       return  mDisplay + sDisplay;
   }
 
@@ -181,8 +181,8 @@ class Album extends Component {
           <PlayerBar
             isPlaying={this.state.isPlaying}
             currentSong={this.state.currentSong}
-            formatTime(currentTime={this.audioElement.currentTime}
-            formatTime(duration)={this.state.duration}
+            currentTime={this.audioElement.currentTime}
+            duration={this.state.duration}
             volume={this.audioElement.volume}
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
