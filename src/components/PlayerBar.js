@@ -38,7 +38,7 @@ class PlayerBar extends Component {
           <input
             type="range"
             className="seek-bar"
-            value={(this.props.volume) || .8}
+            value={(this.props.volume)}
             max="1"
             min="0"
             step=".01"

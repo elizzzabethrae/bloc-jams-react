@@ -21,7 +21,7 @@ class Album extends Component {
       currentTime: 0,
       duration: album.songs[0].duration,
       isPlaying: false,
-      volume: .8
+      
     };
 
     this.audioElement = document.createElement('audio');
@@ -52,14 +52,12 @@ class Album extends Component {
          };
          this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
          this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
-         this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
        }
 
   componentWillUnmount() {
     this.audioElement.src = null;
     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
-    this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
   }
 
   setSong(song) {
@@ -67,8 +65,8 @@ class Album extends Component {
     this.setState({ currentSong: song });
   }
 
-  showIcons (song, index) { //does this just take whatever we need in the function?
-    const isSameSong = this.state.currentSong === song; //is this needed?
+  showIcons (song, index) {
+    const isSameSong = this.state.currentSong === song;
 
     /*const showPause = this.state.isPlaying && isSameSong;
     const isHovered = this.state.isHovered === index + 1;
@@ -128,8 +126,7 @@ class Album extends Component {
   }
 
   handleVolumeChange(e) {
-    console.log("handleVolumeChange", e.target.value)
-    const newVolume = e.target.value;
+    const newVolume = this.audioElement.volume * e.target.value;
     this.audioElement.volume = newVolume;
     this.setState({ volume : newVolume });
   }
@@ -183,7 +180,7 @@ class Album extends Component {
             currentSong={this.state.currentSong}
             currentTime={this.audioElement.currentTime}
             duration={this.state.duration}
-            volume={this.audioElement.volume}
+
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
             handleNextClick={() => this.handleNextClick()}
