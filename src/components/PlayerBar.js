@@ -38,11 +38,11 @@ class PlayerBar extends Component {
           <input
             type="range"
             className="seek-bar"
-            value={(this.props.volume)}
+            value={(this.props.volume)}//why props and not audioElemnent?
             max="1"
             min="0"
             step=".01"
-            onChange={this.props.handeVolumeChange}
+            onChange={this.props.handleVolumeChange}
           />
         </section>
       </section>
