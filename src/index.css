@@ -1,5 +1,40 @@
 body {
   margin: 10;
-  padding: 10;
+  padding: 50;
   font-family: sans-serif;
+}
+
+.selling-points {
+  text-align: left;
+}
+
+.Landing{
+  padding: 50;
+  font-family: inherit;
+  color: white;
+}
+
+.hero-title {
+  font-size: 90;
+  color: white;
+  text-align: left;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.point {
+  font-size: 50;
+  font-family: monospace;
+  color: white;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+body {
+  background-image: url('blur_bg_3.jpg');
+  background-repeat: no-repeat;
+  background-size: no-repeat;
+  color: white;
 }
