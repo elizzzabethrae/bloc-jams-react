@@ -1,3 +1,8 @@
+Bloc Jams is a intuitive web player, on trend with Spotify. It is a responsive site, with interactive play/pause/next buttons. While it includes a limited library for now, it could grow to a large scale. 
+
+This project was built primarily using React and Node Package Manager (npm).
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
